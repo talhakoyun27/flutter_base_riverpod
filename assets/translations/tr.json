@@ -1,0 +1,48 @@
+{
+    "mainText": {
+        "title": "Flutter Temel Riverpod"
+    },
+    "titles": {
+        "login": "Giriş Yap",
+        "home": "Ana Sayfa",
+        "homeDetail": "Ana Sayfa Detay",
+        "authentication": "Kimlik Doğrulama",
+        "settings": "Ayarlar",
+        "settingsDetail": "Ayarlar Detay",
+        "about": "Hakkında",
+        "aboutDetail": "Hakkında Detay",
+        "notFound": "Bulunamadı",
+        "notFoundDetail": "Bulunamadı Detay"
+    },
+    "authentication": {
+        "welcome": {
+            "title": "Base Kurulum",
+            "description": "Kodlama ortamınızı zahmetsizce kurun",
+            "getStarted": "Hadi Başlayalım",
+            "withoutAccount": "Hesabınız yok mu? Buradan kaydolun"
+        }
+    },
+    "general": {
+        "viewAll": "Hepsini Gör"
+    },
+    "home": {
+        "ratingAndReview": "Derecelendirme ve İnceleme"
+    },
+    "homeDetail": {
+        "selectableTitle": {
+            "copyAll": "Tümünü Kopyala",
+            "copyAllShare": "Tümünü Kopyala & Paylaş",
+            "share": "Paylaş"
+        }
+    },
+    "button": {
+        "extension": "Eklenti",
+        "github": "GitHub",
+        "themeChange": "Tema Değiştir",
+        "languageChange": "Dil Değiştir"
+    },
+    "error": {
+        "notFoundPage": "Aradığınız sayfa bulunamadı",
+        "notSupportedPlatform": "Bu platform henüz desteklenmiyor."
+    }
+}

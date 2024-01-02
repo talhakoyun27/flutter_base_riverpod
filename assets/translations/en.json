@@ -1,0 +1,48 @@
+{
+    "mainText": {
+        "title": "Flutter Base Riverpod"
+    },
+    "titles": {
+        "login": "Login Page",
+        "home": "Home Page",
+        "homeDetail": "Home Page Detail",
+        "authentication": "Authentication",
+        "settings": "Settings",
+        "settingsDetail": "Settings Detail",
+        "about": "About",
+        "aboutDetail": "About Detail",
+        "notFound": "Not Found",
+        "notFoundDetail": "Not Found Detail"
+    },
+    "authentication": {
+        "welcome": {
+            "title": "Base Setup",
+            "description": "Set up your coding environment effortlessly",
+            "getStarted": "Get Started",
+            "withoutAccount": "Don't have an account? Sign up here"
+        }
+    },
+    "general": {
+        "viewAll": "View All"
+    },
+    "home": {
+        "ratingAndReview": "Rating and Review"
+    },
+    "homeDetail": {
+        "selectableTitle": {
+            "copyAll": "Copy All",
+            "copyAllShare": "Copy All & Share",
+            "share": "Share"
+        }
+    },
+    "button": {
+        "extension": "Extension",
+        "github": "Github",
+        "themeChange": "Theme Change",
+        "languageChange": "Language Change"
+    },
+    "error": {
+        "notFoundPage": "The page you were looking for was not found",
+        "notSupportedPlatform": "That platform is not supported yet."
+    }
+}
