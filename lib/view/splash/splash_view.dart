@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_base_riverpod/_library/helpers/locators.dart';
 import 'package:flutter_base_riverpod/_library/helpers/translation/locale_keys.g.dart';
 import 'package:flutter_base_riverpod/_library/utils/screen_size.dart';
+import 'package:flutter_base_riverpod/_library/widgets/app_scaffold.dart';
 import 'package:flutter_base_riverpod/controller/auth_controller.dart';
 
 class SplashView extends StatefulWidget {
@@ -24,8 +25,10 @@ class _SplashViewState extends State<SplashView> {
     BuildContext context,
   ) {
     ScreenSize().screenSize = MediaQuery.of(context).size;
-    return Center(
-      child: Text(LocaleKeys.mainText_title.tr()),
+    return AppScaffold(
+      body: Center(
+        child: Text(LocaleKeys.mainText_title.tr()),
+      ),
     );
   }
 }

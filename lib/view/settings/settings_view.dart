@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_riverpod/_library/helpers/translation/locale_keys.g.dart';
 import 'package:flutter_base_riverpod/_library/theme/controller/theme_state.dart';
+import 'package:flutter_base_riverpod/_library/widgets/app_scaffold.dart';
 import 'package:flutter_base_riverpod/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,13 +16,15 @@ class _ThemeViewState extends ConsumerState<SettingsView> {
   @override
   Widget build(BuildContext context) {
     final appTheme = ref.watch(appThemeStateNotifier);
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          buildThemeChanged(appTheme),
-          buildLangChanged(context),
-        ],
+    return AppScaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            buildThemeChanged(appTheme),
+            buildLangChanged(context),
+          ],
+        ),
       ),
     );
   }

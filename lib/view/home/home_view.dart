@@ -18,21 +18,19 @@ class _HomeViewState extends ConsumerState<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: AppScaffold(
-          appBar: AppBar(automaticallyImplyLeading: false, actions: [
-            IconButton(
-              onPressed: () {
-                router.push("/settings");
-              },
-              icon: const Icon(Icons.settings),
-            ),
-          ]),
-          body: Center(
-              child: Text(
-            "Home",
-            style: Theme.of(context).textTheme.bodyMedium,
-          ))),
-    );
+    return AppScaffold(
+        appBar: AppBar(automaticallyImplyLeading: false, actions: [
+          IconButton(
+            onPressed: () {
+              router.push("/settings");
+            },
+            icon: const Icon(Icons.settings),
+          ),
+        ]),
+        body: Center(
+            child: Text(
+          "Home",
+          style: Theme.of(context).textTheme.bodyMedium,
+        )));
   }
 }

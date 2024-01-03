@@ -31,21 +31,23 @@ class AuthController extends BaseController {
     passwordController.dispose();
   }
 
-  setLoginArgument({LogInArgument? argument, bool isSplash = false}) {
+  setLoginArgument({LogInArgument? argument, bool? isSplash}) {
     logInArgument = argument ??
         LogInArgument(
           email: (emailController.text).trim(),
           password: (passwordController.text).trim(),
         );
-    login(argument: argument);
+    login(argument: argument, isSplash: isSplash);
   }
 
   UIState<User> currentUser = UIState.idle();
-  login({LogInArgument? argument}) async {
-    Loader.show(GlobalKeyManager.scaffoldMessengerKey.currentState!.context);
+  login({LogInArgument? argument, bool? isSplash}) async {
+    isSplash ??
+        Loader.show(
+            GlobalKeyManager.scaffoldMessengerKey.currentState!.context);
     try {
       AuthService().login(logInArgument).then((value) {
-        Loader.hide();
+        isSplash ?? Loader.hide();
         value.fold(
           (failure) => failure.showSnackBar(),
           (data) {
@@ -76,7 +78,8 @@ class AuthController extends BaseController {
       final userEither = await locator<LocaleManager>()
           .getDataFromKey(LocaleKeyParam(LocalKeys.loginInfo));
       userEither.fold((failure) => router.go("/login"), (data) {
-        setLoginArgument(argument: LogInArgument.fromMap(json.decode(data)));
+        setLoginArgument(
+            argument: LogInArgument.fromMap(json.decode(data)), isSplash: true);
       });
     } catch (e) {
       return Left(ServiceFailure(errorText: e.toString()));

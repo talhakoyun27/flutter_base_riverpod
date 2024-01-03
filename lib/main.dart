@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_base_riverpod/_library/helpers/locators.dart';
 import 'package:flutter_base_riverpod/app.dart';
 import 'package:flutter_base_riverpod/_library/helpers/translation/translation_manager.dart';
 import 'package:flutter_base_riverpod/_library/utils/app_env.dart';
@@ -14,9 +15,9 @@ void main() async {
 
   await Future.wait([
     EasyLocalization.ensureInitialized(),
+    initLocators(),
     dotenv.load(fileName: AppEnvironment.fileName),
   ]);
-  
   PushNotificationManager.initializePushNotification();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
