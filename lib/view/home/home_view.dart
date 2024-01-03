@@ -22,7 +22,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
         appBar: AppBar(automaticallyImplyLeading: false, actions: [
           IconButton(
             onPressed: () {
-              router.push("/settings");
+              myRouter.push("/settings");
             },
             icon: const Icon(Icons.settings),
           ),

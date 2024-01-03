@@ -1,26 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_base_riverpod/_library/error/data/manager/exception_logger_manager.dart';
 import 'package:flutter_base_riverpod/_library/error/failure/failure.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
-@immutable
-final class GlobalKeyManager {
-  const GlobalKeyManager._();
-
-  static final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
-      GlobalKey<ScaffoldMessengerState>();
-}
-
-@immutable
-final class GlobalContextKey {
-  final GlobalKey<NavigatorState> globalKey = GlobalKey<NavigatorState>();
-
-  static GlobalContextKey instance = GlobalContextKey._init();
-  GlobalContextKey._init();
-}
-
-@immutable
-final class MaskFormatterHelper {
+class MaskFormatterHelper {
   static MaskedInputFormatter phoneMaskForTextField =
       MaskedInputFormatter('0(###)### ## ##');
   static MaskedInputFormatter turkeyPhoneMaskForTextField =

@@ -37,10 +37,11 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             ElevatedButton(
-                onPressed: () {
-                  locator<AuthController>().setLoginArgument();
-                },
-                child: const Text('Login')),
+              onPressed: () {
+                locator<AuthController>().setLoginArgument();
+              },
+              child: const Text('Login'),
+            ),
           ],
         ),
       ),

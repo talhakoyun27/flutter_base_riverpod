@@ -21,8 +21,8 @@ class AuthController extends BaseController {
   late LogInArgument logInArgument;
   @override
   init() {
-    emailController = TextEditingController();
     passwordController = TextEditingController();
+    emailController = TextEditingController();
   }
 
   @override
@@ -42,9 +42,9 @@ class AuthController extends BaseController {
 
   UIState<User> currentUser = UIState.idle();
   login({LogInArgument? argument, bool? isSplash}) async {
-    isSplash ??
-        Loader.show(
-            GlobalKeyManager.scaffoldMessengerKey.currentState!.context);
+    // isSplash ??
+    //     Loader.show(
+    //         GlobalKeyManager.scaffoldMessengerKey.currentState!.context);
     try {
       AuthService().login(logInArgument).then((value) {
         isSplash ?? Loader.hide();
@@ -53,7 +53,7 @@ class AuthController extends BaseController {
           (data) {
             currentUser = UIState.success(data);
             saveLocale(argument: argument);
-            router.go("/home");
+            myRouter.go("/home");
             clearUserArgumentController();
           },
         );
@@ -77,7 +77,7 @@ class AuthController extends BaseController {
     try {
       final userEither = await locator<LocaleManager>()
           .getDataFromKey(LocaleKeyParam(LocalKeys.loginInfo));
-      userEither.fold((failure) => router.go("/login"), (data) {
+      userEither.fold((failure) => myRouter.go("/login"), (data) {
         setLoginArgument(
             argument: LogInArgument.fromMap(json.decode(data)), isSplash: true);
       });

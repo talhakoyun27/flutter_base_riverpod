@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_base_riverpod/_library/constants/app_router.dart';
 import 'package:flutter_base_riverpod/_library/helpers/translation/locale_keys.g.dart';
 import 'package:flutter_base_riverpod/_library/theme/controller/theme_state.dart';
 import 'package:flutter_base_riverpod/_library/widgets/app_scaffold.dart';
+import 'package:flutter_base_riverpod/_library/widgets/snackbar_widget.dart';
 import 'package:flutter_base_riverpod/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,6 +25,17 @@ class _ThemeViewState extends ConsumerState<SettingsView> {
           children: [
             buildThemeChanged(appTheme),
             buildLangChanged(context),
+            ElevatedButton(
+                onPressed: () {
+                  CustomSnackbar.showSnackBar(
+                      message: "message", bgColor: Colors.amber);
+                },
+                child: const Text("snacBar")),
+            ElevatedButton(
+                onPressed: () {
+                  myRouter.push("/listview");
+                },
+                child: const Text("to=>Listview"))
           ],
         ),
       ),

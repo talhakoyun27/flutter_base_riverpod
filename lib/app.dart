@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_riverpod/_library/constants/app_router.dart';
 import 'package:flutter_base_riverpod/_library/helpers/translation/locale_keys.g.dart';
+import 'package:flutter_base_riverpod/_library/helpers/usefull_functions.dart';
 import 'package:flutter_base_riverpod/_library/theme/custom_dark_theme.dart';
 import 'package:flutter_base_riverpod/_library/theme/custom_light_theme.dart';
 import 'package:flutter_base_riverpod/_library/widgets/network_widgets/network_connectivity_build.dart';
@@ -25,7 +26,7 @@ class BaseApp extends ConsumerWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      routerConfig: router,
+      routerConfig: myRouter,
     );
   }
 }

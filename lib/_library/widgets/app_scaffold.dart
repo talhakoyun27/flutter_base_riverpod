@@ -30,20 +30,17 @@ class AppScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
-      child: ScaffoldMessenger(
-        key: GlobalKeyManager.scaffoldMessengerKey,
-        child: Scaffold(
-          backgroundColor: backgroundColor,
-          appBar: appBar,
-          body: body,
-          drawer: drawer,
-          bottomNavigationBar: bottomNavigationBar,
-          floatingActionButton: floatingActionButton,
-          floatingActionButtonLocation: floatingActionButtonLocation ??
-              FloatingActionButtonLocation.miniCenterFloat,
-          bottomSheet: bottomSheet,
-          resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-        ),
+      child: Scaffold(
+        backgroundColor: backgroundColor,
+        appBar: appBar,
+        body: body,
+        drawer: drawer,
+        bottomNavigationBar: bottomNavigationBar,
+        floatingActionButton: floatingActionButton,
+        floatingActionButtonLocation: floatingActionButtonLocation ??
+            FloatingActionButtonLocation.miniCenterFloat,
+        bottomSheet: bottomSheet,
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       ),
     );
   }
