@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_riverpod/controller/authentication.dart';
-import 'package:flutter_base_riverpod/_library/helpers/injection.dart';
+import 'package:flutter_base_riverpod/_library/helpers/locators.dart';
 import 'package:flutter_base_riverpod/_library/widgets/app_scaffold.dart';
+import 'package:flutter_base_riverpod/controller/auth_controller.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
-
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<StatefulWidget> createState() => _LoginViewState();
 }
 
 class _LoginViewState extends State<LoginView> {
-  final auth = serviceLocator<Authentication>();
+  @override
+  void initState() {
+    super.initState();
+    locator<AuthController>().init();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
@@ -21,20 +25,20 @@ class _LoginViewState extends State<LoginView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
-              controller: auth.emailController,
+              controller: locator<AuthController>().emailController,
               decoration: const InputDecoration(
                 hintText: 'Email',
               ),
             ),
             TextField(
-              controller: auth.passwordController,
+              controller: locator<AuthController>().passwordController,
               decoration: const InputDecoration(
                 hintText: 'Password',
               ),
             ),
             ElevatedButton(
                 onPressed: () {
-                  auth.setLoginArgumentAndLogin();
+                  locator<AuthController>().setLoginArgument();
                 },
                 child: const Text('Login')),
           ],

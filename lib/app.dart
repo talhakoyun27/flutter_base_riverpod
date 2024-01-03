@@ -25,7 +25,7 @@ class BaseApp extends ConsumerWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      routerConfig: AppRouter().router,
+      routerConfig: router,
     );
   }
 }

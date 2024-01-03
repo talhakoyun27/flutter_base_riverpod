@@ -8,15 +8,12 @@ import 'package:flutter_base_riverpod/_library/utils/push_notification_manager.d
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:flutter_base_riverpod/_library/helpers/injection.dart' as locator;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Future.wait([
     EasyLocalization.ensureInitialized(),
-    locator.init(),
-
     dotenv.load(fileName: AppEnvironment.fileName),
   ]);
   

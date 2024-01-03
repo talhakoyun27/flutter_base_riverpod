@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_riverpod/_library/helpers/injection.dart';
-import 'package:flutter_base_riverpod/_library/helpers/locale_manager/arg/local_key_param.dart';
-import 'package:flutter_base_riverpod/_library/helpers/locale_manager/arg/local_key_with_value_param.dart';
-import 'package:flutter_base_riverpod/_library/helpers/locale_manager/arg/local_keys.dart';
-import 'package:flutter_base_riverpod/_library/helpers/locale_manager/i_locale_manager.dart';
+import 'package:flutter_base_riverpod/_library/helpers/locale_manager/arg/locale_key_param.dart';
+import 'package:flutter_base_riverpod/_library/helpers/locale_manager/arg/locale_key_with_value_param.dart';
+import 'package:flutter_base_riverpod/_library/helpers/locale_manager/locale_manager.dart';
 
 class ThemeState extends ChangeNotifier {
   var isDarkModeEnabled = false;
@@ -12,11 +10,10 @@ class ThemeState extends ChangeNotifier {
     getTheme();
   }
   void getTheme() async {
-    var result = await serviceLocator<ILocalManager>()
-        .getDataFromKey(LocalKeyParam(LocalKeys.isDarkModeEnabled));
+    var result = await LocaleManager()
+        .getDataFromKey(LocaleKeyParam(LocalKeys.isDarkModeEnabled));
     result.fold((l) {
       isDarkModeEnabled = false;
-      
     }, (r) {
       isDarkModeEnabled = r == "true";
     });
@@ -25,16 +22,16 @@ class ThemeState extends ChangeNotifier {
 
   void setLightTheme() async {
     isDarkModeEnabled = false;
-    await serviceLocator<ILocalManager>().saveDataFromKey(
-        LocalKeyWithValueParam(LocalKeys.isDarkModeEnabled, data: "false"));
+    await LocaleManager().saveDataFromKey(
+        LocaleKeyWithValueParam(LocalKeys.isDarkModeEnabled, data: "false"));
 
     notifyListeners();
   }
 
   void setDarkTheme() async {
     isDarkModeEnabled = true;
-    await serviceLocator<ILocalManager>().saveDataFromKey(
-        LocalKeyWithValueParam(LocalKeys.isDarkModeEnabled, data: "true"));
+    await LocaleManager().saveDataFromKey(
+        LocaleKeyWithValueParam(LocalKeys.isDarkModeEnabled, data: "true"));
     notifyListeners();
   }
 }

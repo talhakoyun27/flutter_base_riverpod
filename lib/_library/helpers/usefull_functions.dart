@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base_riverpod/_library/error/data/manager/exception_logger_manager.dart';
 import 'package:flutter_base_riverpod/_library/error/failure/failure.dart';
-import 'package:flutter_base_riverpod/_library/helpers/injection.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 @immutable
@@ -41,7 +40,7 @@ class UIState<T> {
     status = UIStateStatus.error;
 
     if (logException) {
-      serviceLocator<ExceptionLoggerManager>()
+      ExceptionLoggerManager()
           .captureException(failure, stackTrace: stackTrace);
     }
   }

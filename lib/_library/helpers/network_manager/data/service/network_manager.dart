@@ -7,9 +7,9 @@ import 'package:flutter_base_riverpod/_library/constants/app_constants.dart';
 import 'package:flutter_base_riverpod/_library/error/exceptions.dart';
 import 'package:flutter_base_riverpod/_library/error/failure/failure.dart';
 import 'package:flutter_base_riverpod/_library/error/failure/network_failure.dart';
+import 'package:flutter_base_riverpod/_library/extensions/string_extension.dart';
 import 'package:flutter_base_riverpod/_library/helpers/network_manager/domain/enum/app_endpoint.dart';
 import 'package:flutter_base_riverpod/_library/helpers/network_manager/domain/service/i_network_manager.dart';
-import 'package:flutter_base_riverpod/_library/extensions/string_extension.dart';
 
 class NetworkManager implements INetworkManager {
   final Dio dio;
@@ -25,7 +25,8 @@ class NetworkManager implements INetworkManager {
   }) async {
     return await _errorHandler(
       dio.get(
-        endPoint.value.replaceAll(AppConstants.slug, (slug??"").getValueOrDefault),
+        endPoint.value
+            .replaceAll(AppConstants.slug, (slug ?? "").getValueOrDefault),
         queryParameters: queryParameters,
         options: options,
       ),
