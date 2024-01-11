@@ -93,4 +93,7 @@ class DeviceManager {
           ? _androidDeviceInfo?.isPhysicalDevice
           : _iosDeviceInfo?.isPhysicalDevice) ??
       false;
+
+  bool get isAndroid => Platform.isAndroid;
+  bool get isIos => Platform.isIOS;
 }

@@ -23,7 +23,8 @@
         }
     },
     "general": {
-        "viewAll": "View All"
+        "viewAll": "View All",
+        "appIsUsable": "Application available."
     },
     "home": {
         "ratingAndReview": "Rating and Review"
@@ -39,10 +40,15 @@
         "extension": "Extension",
         "github": "Github",
         "themeChange": "Theme Change",
-        "languageChange": "Language Change"
+        "languageChange": "Language Change",
+        "update": "Update"
     },
     "error": {
         "notFoundPage": "The page you were looking for was not found",
-        "notSupportedPlatform": "That platform is not supported yet."
+        "notSupportedPlatform": "That platform is not supported yet.",
+        "notAvaible": "We are currently unavailable, please try again later.",
+        "mustBeUpdated": "To continue using the app, you must update it.",
+        "locationError": "Location Error",
+        "versionError": "Version Error"
     }
 }

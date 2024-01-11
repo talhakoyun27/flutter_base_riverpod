@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_base_riverpod/_library/helpers/network_manager/dio_connectivity_request_retrier.dart';
 
@@ -21,7 +20,7 @@ class RetryOnConnectionChangeInterceptor extends Interceptor {
   }
 
   bool _shouldRetry(DioException err) =>
-      err.type == DioExceptionType.unknown &&
+      err.type == DioExceptionType.connectionError &&
       err.error != null &&
-      err.error == SocketException;
+      err.error.runtimeType == SocketException;
 }

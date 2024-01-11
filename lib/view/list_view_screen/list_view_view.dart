@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_riverpod/_library/helpers/usefull_functions.dart';
 import 'package:flutter_base_riverpod/_library/utils/screen_size.dart';

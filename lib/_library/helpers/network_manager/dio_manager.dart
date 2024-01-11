@@ -1,6 +1,6 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_base_riverpod/_library/constants/app_constants.dart';
+import 'package:flutter_base_riverpod/_library/helpers/connectivity_management.dart';
 import 'package:flutter_base_riverpod/_library/helpers/network_manager/dio_connectivity_request_retrier.dart';
 import 'package:flutter_base_riverpod/_library/helpers/network_manager/retry_interceptor.dart';
 
@@ -28,7 +28,7 @@ class DioManager {
       RetryOnConnectionChangeInterceptor(
         requestRetrier: DioConnectivityRequestRetrier(
           dio: dio,
-          connectivity: Connectivity(),
+          connectivity: NetworkChangeManager(),
         ),
       ),
     );

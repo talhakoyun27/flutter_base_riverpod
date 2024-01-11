@@ -7,10 +7,10 @@ const defaultValue = 56.0;
 class Loader extends StatelessWidget {
   static OverlayEntry? _currentLoader;
 
-  const Loader._(this._progressIndicator, this._themeData);
+  const Loader({this.progressIndicator, this.themeData, super.key});
 
-  final Widget? _progressIndicator;
-  final ThemeData? _themeData;
+  final Widget? progressIndicator;
+  final ThemeData? themeData;
 
   static OverlayState? _overlayState;
   static bool get isShown => _currentLoader != null;
@@ -51,9 +51,9 @@ class Loader extends StatelessWidget {
                     ? 0.0
                     : overlayFromBottom ?? defaultPaddingBottom),
             Center(
-              child: Loader._(
-                progressIndicator,
-                themeData,
+              child: Loader(
+                progressIndicator: progressIndicator,
+                themeData: themeData,
               ),
             ),
           ],
@@ -106,15 +106,12 @@ class Loader extends StatelessWidget {
       canPop: false,
       child: Center(
         child: Theme(
-          data: _themeData ??
+          data: themeData ??
               Theme.of(context).copyWith(
                   colorScheme: ColorScheme.fromSwatch().copyWith(
                 secondary: Colors.amber,
               )),
-          child: _progressIndicator ??
-              const CircularProgressIndicator(
-                color: Colors.amber,
-              ),
+          child: progressIndicator ?? CircularProgressIndicator(),
         ),
       ),
     );

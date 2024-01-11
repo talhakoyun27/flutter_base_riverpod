@@ -3,7 +3,6 @@ import 'package:flutter_base_riverpod/_library/helpers/network_manager/domain/en
 import 'package:flutter_base_riverpod/_library/helpers/usefull_functions.dart';
 import 'package:flutter_base_riverpod/controller/base_controller.dart';
 import 'package:flutter_base_riverpod/model/posts_model.dart';
-import 'package:flutter_base_riverpod/service/abstract/i_post_service.dart';
 import 'package:flutter_base_riverpod/service/posts_service.dart';
 
 class PostsController extends BaseController {

@@ -1,7 +1,5 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: constant_identifier_names
-
 abstract class  LocaleKeys {
   static const mainText_title = 'mainText.title';
   static const mainText = 'mainText';
@@ -23,6 +21,7 @@ abstract class  LocaleKeys {
   static const authentication_welcome = 'authentication.welcome';
   static const authentication = 'authentication';
   static const general_viewAll = 'general.viewAll';
+  static const general_appIsUsable = 'general.appIsUsable';
   static const general = 'general';
   static const home_ratingAndReview = 'home.ratingAndReview';
   static const home = 'home';
@@ -35,9 +34,14 @@ abstract class  LocaleKeys {
   static const button_github = 'button.github';
   static const button_themeChange = 'button.themeChange';
   static const button_languageChange = 'button.languageChange';
+  static const button_update = 'button.update';
   static const button = 'button';
   static const error_notFoundPage = 'error.notFoundPage';
   static const error_notSupportedPlatform = 'error.notSupportedPlatform';
+  static const error_notAvaible = 'error.notAvaible';
+  static const error_mustBeUpdated = 'error.mustBeUpdated';
+  static const error_locationError = 'error.locationError';
+  static const error_versionError = 'error.versionError';
   static const error = 'error';
 
 }

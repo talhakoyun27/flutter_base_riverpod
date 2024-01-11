@@ -3,6 +3,7 @@ enum AppEndpoint {
   fetchPosts("posts"),
   fetchPostsDetail("posts/detail"),
   fetchProfile("user/profile"),
+  fetchVersion("version"),
   ;
 
   final String value;

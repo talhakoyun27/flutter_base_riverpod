@@ -23,7 +23,8 @@
         }
     },
     "general": {
-        "viewAll": "Hepsini Gör"
+        "viewAll": "Hepsini Gör",
+        "appIsUsable": "Uygulama kullanılabilir."
     },
     "home": {
         "ratingAndReview": "Derecelendirme ve İnceleme"
@@ -39,10 +40,15 @@
         "extension": "Eklenti",
         "github": "GitHub",
         "themeChange": "Tema Değiştir",
-        "languageChange": "Dil Değiştir"
+        "languageChange": "Dil Değiştir",
+        "update": "Güncelle"
     },
     "error": {
         "notFoundPage": "Aradığınız sayfa bulunamadı",
-        "notSupportedPlatform": "Bu platform henüz desteklenmiyor."
+        "notSupportedPlatform": "Bu platform henüz desteklenmiyor.",
+        "notAvaible": "Şuanda hizmet verememekteyiz, lütfen daha sonra tekrar deneyin.",
+        "mustBeUpdated": "Uygulamayı kullanmaya devam edebilmek için güncellemelisiniz",
+        "locationError": "Lokasyon Hatası",
+        "versionError": "Versiyon Hatası"
     }
 }

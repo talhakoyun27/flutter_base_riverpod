@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_base_riverpod/_library/helpers/usefull_functions.dart';
 
 class AppScaffold extends StatelessWidget {
   final PreferredSizeWidget? appBar;
