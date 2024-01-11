@@ -22,6 +22,8 @@ abstract class  LocaleKeys {
   static const authentication = 'authentication';
   static const general_viewAll = 'general.viewAll';
   static const general_appIsUsable = 'general.appIsUsable';
+  static const general_updateRequired = 'general.updateRequired';
+  static const general_maintenanceHeadline = 'general.maintenanceHeadline';
   static const general = 'general';
   static const home_ratingAndReview = 'home.ratingAndReview';
   static const home = 'home';
@@ -34,11 +36,11 @@ abstract class  LocaleKeys {
   static const button_github = 'button.github';
   static const button_themeChange = 'button.themeChange';
   static const button_languageChange = 'button.languageChange';
-  static const button_update = 'button.update';
+  static const button_openStore = 'button.openStore';
   static const button = 'button';
   static const error_notFoundPage = 'error.notFoundPage';
   static const error_notSupportedPlatform = 'error.notSupportedPlatform';
-  static const error_notAvaible = 'error.notAvaible';
+  static const error_maintenanceBody = 'error.maintenanceBody';
   static const error_mustBeUpdated = 'error.mustBeUpdated';
   static const error_locationError = 'error.locationError';
   static const error_versionError = 'error.versionError';

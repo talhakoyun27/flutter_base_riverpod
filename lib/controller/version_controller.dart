@@ -16,14 +16,14 @@ class VersionController extends BaseController {
   String? downloadedVersion;
   UIState<VersionControlModel> versionState = UIState.idle();
 
-  Future<void> fetchVersion() async {
+  Future<UIState<VersionControlModel>> fetchVersion() async {
     downloadedVersion = await _getDeviceAppVersion();
 
     versionState = UIState.loading();
     refreshView();
     final fetchVersionEither = await VersionService().fetchVersion(
         params: GetRequestParam(endPoint: AppEndpoint.fetchVersion));
-    fetchVersionEither.fold(
+    await fetchVersionEither.fold(
       (failure) {
         versionState = UIState.error(failure);
       },
@@ -32,11 +32,11 @@ class VersionController extends BaseController {
         switch (versionStatus) {
           case AppVersionStatus.usable:
             VersionControlModel result = VersionControlModel(
-                status: AppVersionStatus.usable,
-                message: data.android?.message ??
-                    LocaleKeys.general_appIsUsable.tr());
+              status: AppVersionStatus.usable,
+              message:
+                  data.android?.message ?? LocaleKeys.general_appIsUsable.tr(),
+            );
             versionState = UIState.success(result);
-            break;
 
           case AppVersionStatus.mustBeUpdated:
             VersionControlModel result = VersionControlModel(
@@ -50,20 +50,24 @@ class VersionController extends BaseController {
               platform: platform,
             );
             versionState = UIState.success(result);
-            break;
 
           case AppVersionStatus.unavailable:
             VersionControlModel result = VersionControlModel(
-                status: AppVersionStatus.unavailable,
-                message:
-                    data.android?.message ?? LocaleKeys.error_notAvaible.tr());
-            versionState = UIState.error(result);
-            break;
+              status: AppVersionStatus.unavailable,
+              message: platform == AppPlatform.android
+                  ? data.android?.message ??
+                      LocaleKeys.error_maintenanceBody.tr()
+                  : platform == AppPlatform.ios
+                      ? data.ios?.message ??
+                          LocaleKeys.error_maintenanceBody.tr()
+                      : LocaleKeys.error_maintenanceBody.tr(),
+            );
+            versionState = UIState.success(result);
         }
-        refreshView();
       },
     );
     refreshView();
+    return versionState;
   }
 
   // Get version of the downloaded app

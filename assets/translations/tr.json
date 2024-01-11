@@ -24,7 +24,9 @@
     },
     "general": {
         "viewAll": "Hepsini Gör",
-        "appIsUsable": "Uygulama kullanılabilir."
+        "appIsUsable": "Uygulama kullanılabilir.",
+        "updateRequired": "Güncelleme Gerekli",
+        "maintenanceHeadline": "Bakımdayız"
     },
     "home": {
         "ratingAndReview": "Derecelendirme ve İnceleme"
@@ -41,13 +43,13 @@
         "github": "GitHub",
         "themeChange": "Tema Değiştir",
         "languageChange": "Dil Değiştir",
-        "update": "Güncelle"
+        "openStore": "Markete Git"
     },
     "error": {
         "notFoundPage": "Aradığınız sayfa bulunamadı",
         "notSupportedPlatform": "Bu platform henüz desteklenmiyor.",
-        "notAvaible": "Şuanda hizmet verememekteyiz, lütfen daha sonra tekrar deneyin.",
-        "mustBeUpdated": "Uygulamayı kullanmaya devam edebilmek için güncellemelisiniz",
+        "maintenanceBody": "Şuanda hizmet verememekteyiz, lütfen daha sonra tekrar deneyin.",
+        "mustBeUpdated": "Uygulamayı kullanmaya devam edebilmek için güncellemelisiniz.",
         "locationError": "Lokasyon Hatası",
         "versionError": "Versiyon Hatası"
     }

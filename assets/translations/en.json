@@ -24,7 +24,9 @@
     },
     "general": {
         "viewAll": "View All",
-        "appIsUsable": "Application available."
+        "appIsUsable": "Application available.",
+        "updateRequired": "Update Required",
+        "maintenanceHeadline": "Under Maintenance"
     },
     "home": {
         "ratingAndReview": "Rating and Review"
@@ -41,12 +43,12 @@
         "github": "Github",
         "themeChange": "Theme Change",
         "languageChange": "Language Change",
-        "update": "Update"
+        "openStore": "Open Store"
     },
     "error": {
         "notFoundPage": "The page you were looking for was not found",
         "notSupportedPlatform": "That platform is not supported yet.",
-        "notAvaible": "We are currently unavailable, please try again later.",
+        "maintenanceBody": "The application is under maintenance, please try again later.",
         "mustBeUpdated": "To continue using the app, you must update it.",
         "locationError": "Location Error",
         "versionError": "Version Error"

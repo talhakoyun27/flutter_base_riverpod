@@ -8,9 +8,16 @@ final class CustomLightTheme implements CustomTheme {
         useMaterial3: true,
         colorScheme: CustomColorScheme.lightColorScheme,
         floatingActionButtonTheme: floatingActionButtonThemeData,
+        textTheme: textThemeData,
       );
 
   @override
   FloatingActionButtonThemeData get floatingActionButtonThemeData =>
       const FloatingActionButtonThemeData();
+
+  @override
+  TextTheme get textThemeData => const TextTheme(
+        bodyLarge: TextStyle(fontSize: 16),
+        labelMedium: TextStyle(fontSize: 14),
+      );
 }
