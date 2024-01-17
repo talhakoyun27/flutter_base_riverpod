@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_base_riverpod/_library/helpers/translation/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base_riverpod/controller/version_controller.dart';
 import 'package:flutter_base_riverpod/view/authentication/login/login_view.dart';
@@ -27,7 +29,13 @@ final GoRouter myRouter = GoRouter(
           name: "version_error",
           path: 'version_error',
           builder: (BuildContext context, GoRouterState state) {
-            VersionControlModel data = state.extra as VersionControlModel;
+            VersionControlModel data =
+                state.extra == null || state.extra is! VersionControlModel
+                    ? VersionControlModel(
+                        status: AppVersionStatus.unavailable,
+                        message: LocaleKeys.error_notFoundPage.tr(),
+                      )
+                    : state.extra as VersionControlModel;
             return VersionErrorView(data: data);
           },
         ),
@@ -35,7 +43,14 @@ final GoRouter myRouter = GoRouter(
           name: "version_update",
           path: 'version_update',
           builder: (BuildContext context, GoRouterState state) {
-            VersionControlModel data = state.extra as VersionControlModel;
+            VersionControlModel data =
+                state.extra == null || state.extra is! VersionControlModel
+                    ? VersionControlModel(
+                        status: AppVersionStatus.unavailable,
+                        message: LocaleKeys.error_notFoundPage.tr(),
+                        url: "",
+                      )
+                    : state.extra as VersionControlModel;
             return VersionUpdateView(data: data);
           },
         ),

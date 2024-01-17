@@ -7,7 +7,7 @@ import 'package:flutter_base_riverpod/controller/version_controller.dart';
 
 class VersionErrorView extends StatelessWidget {
   const VersionErrorView({Key? key, required this.data}) : super(key: key);
-  final VersionControlModel data;
+  final VersionControlModel? data;
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -29,7 +29,7 @@ class VersionErrorView extends StatelessWidget {
                   ),
                   const SpaceSizedHeightBox(height: 0.015),
                   Text(
-                    data.message,
+                    data?.message ?? LocaleKeys.error_notFoundPage.tr(),
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const SpaceSizedHeightBox(height: 0.015),

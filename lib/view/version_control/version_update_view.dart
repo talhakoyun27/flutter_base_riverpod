@@ -8,7 +8,7 @@ import 'package:flutter_base_riverpod/controller/version_controller.dart';
 
 class VersionUpdateView extends StatelessWidget {
   const VersionUpdateView({super.key, required this.data});
-  final VersionControlModel data;
+  final VersionControlModel? data;
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -30,7 +30,7 @@ class VersionUpdateView extends StatelessWidget {
                   ),
                   const SpaceSizedHeightBox(height: 0.015),
                   Text(
-                    data.message,
+                    data?.message ?? LocaleKeys.error_notFoundPage.tr(),
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const SpaceSizedHeightBox(height: 0.015),
@@ -54,7 +54,7 @@ class VersionUpdateView extends StatelessWidget {
 
   openAppInMarket() {
     UrlLauncherHelper().launchLinkUrl(
-      url: data.url ?? "",
+      url: data?.url ?? "",
     );
   }
 }
