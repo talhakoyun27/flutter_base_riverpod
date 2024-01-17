@@ -7,7 +7,7 @@ import 'package:get_it/get_it.dart';
 final locator = GetIt.instance;
 Future<void> initLocators() async {
   locator.registerLazySingleton(() => LocaleManager());
-  locator.registerLazySingletonAsync<DeviceManager>(
+  locator.registerSingletonAsync<DeviceManager>(
       () async => await DeviceManager.createDeviceInfo());
 
   locator.registerLazySingleton<AuthController>(() => AuthController());

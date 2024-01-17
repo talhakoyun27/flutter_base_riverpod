@@ -1,5 +1,6 @@
 import 'package:flutter_base_riverpod/_library/error/failure/failure.dart';
 import 'package:flutter_base_riverpod/_library/helpers/device_manager.dart';
+import 'package:flutter_base_riverpod/_library/helpers/locators.dart';
 import 'package:flutter_base_riverpod/_library/helpers/network_manager/domain/argument/get_request_param.dart';
 import 'package:flutter_base_riverpod/_library/helpers/network_manager/domain/enum/app_endpoint.dart';
 import 'package:flutter_base_riverpod/_library/helpers/translation/locale_keys.g.dart';
@@ -13,12 +14,9 @@ class VersionController extends BaseController {
   VersionController();
   AppVersionStatus versionStatus = AppVersionStatus.unavailable;
   AppPlatform? platform;
-  String? downloadedVersion;
   UIState<VersionControlModel> versionState = UIState.idle();
 
   Future<UIState<VersionControlModel>> fetchVersion() async {
-    downloadedVersion = await _getDeviceAppVersion();
-
     versionState = UIState.loading();
     refreshView();
     final fetchVersionEither = await VersionService().fetchVersion(
@@ -70,80 +68,74 @@ class VersionController extends BaseController {
     return versionState;
   }
 
-  // Get version of the downloaded app
-  Future<String> _getDeviceAppVersion() async {
-    DeviceManager deviceManager = await DeviceManager.createDeviceInfo();
-    String currentAppVersion = deviceManager.appVersion;
-    return currentAppVersion;
-  }
-
-  // Check if app is active
+  // Başlangıç noktası
   Future<AppVersionStatus> _checkStatus(VersionModel model) async {
     return _checkPlatformStatus(model);
   }
 
-  // Check if downloaded ios app is updated
+  // Yüklü uygulama ios versiyonu güncel mi kontrol et
   AppVersionStatus _checkIosVersion(VersionModel? model) {
     int parsedVersion = _parseVersion();
     if (parsedVersion >= (model?.ios?.version ?? 0)) {
-      // App can be used
+      // Uygulama kullanılabilir
       return AppVersionStatus.usable;
     } else {
-      //must be updated
+      // Uygulama güncellenmek zorunda
       platform = AppPlatform.ios;
       return AppVersionStatus.mustBeUpdated;
     }
   }
 
-// Check if downloaded android app is updated
+// Yüklü uygulama android versiyonu güncel mi kontrol et
   AppVersionStatus _checkAndroidVersion(VersionModel? model) {
     int parsedVersion = _parseVersion();
     if (parsedVersion >= (model?.android?.version ?? 0)) {
-      // App can be used
+      // Uygulama kullanılabilir
       return AppVersionStatus.usable;
     } else {
-      // App must be updated
+      // uygulama güncellenmek zorunda
       platform = AppPlatform.android;
       return AppVersionStatus.mustBeUpdated;
     }
   }
 
-  // Check if app is useable for ios platform
+  // Uygulama ios cihazlarda kullanılabilir mi
   AppVersionStatus _checkIosUseable(VersionModel? model) {
     if (model?.ios?.usable ?? false) {
       return _checkIosVersion(model);
     } else {
-      // App is closed for ios
+      // Kullanılamaz
       return AppVersionStatus.unavailable;
     }
   }
 
-  // Check if app is useable for android platform
+  // Uygulama android cihazlarda kullanılabilir mi
   AppVersionStatus _checkAndroidUseable(VersionModel? model) {
     if (model?.android?.usable ?? false) {
       return _checkAndroidVersion(model);
     } else {
-      // App is closed for android
+      // Kullanılamaz
       return AppVersionStatus.unavailable;
     }
   }
 
-  // Get platform and check if useable
+  // Platformu kontrol et
   Future<AppVersionStatus> _checkPlatformStatus(VersionModel? model) async {
-    DeviceManager deviceManager = await DeviceManager.createDeviceInfo();
-    if (deviceManager.isAndroid) {
+    if (locator<DeviceManager>().isAndroid) {
       return _checkAndroidUseable(model);
-    } else if (deviceManager.isIos && model!.android != null) {
+    } else if (locator<DeviceManager>().isIos) {
       return _checkIosUseable(model);
     } else {
-      // Android veya ios değilse
+      // Android veya ios değilse kullanılamaz
       return AppVersionStatus.usable;
     }
   }
 
-  // Parse string downloaded app version to int
+  // Yüklü uygulama versiyonunu parse et
   int _parseVersion() {
-    return int.tryParse(downloadedVersion?.split('.').join() ?? "0") ?? 0;
+    return int.tryParse(
+            locator<DeviceManager>().appVersion.split('.').join()) ??
+        0;
   }
 }
 
