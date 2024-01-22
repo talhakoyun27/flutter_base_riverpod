@@ -30,7 +30,10 @@ class _ThemeViewState extends ConsumerState<SettingsView> {
                   CustomSnackbar.showSnackBar(
                       message: "message", bgColor: Colors.amber);
                 },
-                child: const Text("snacBar")),
+                child: Text(
+                  "snacBar",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                )),
             ElevatedButton(
                 onPressed: () {
                   myRouter.push("/listview");
@@ -47,7 +50,7 @@ class _ThemeViewState extends ConsumerState<SettingsView> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(LocaleKeys.button_themeChange.tr(),
-            style: Theme.of(context).textTheme.bodyMedium!),
+            style: Theme.of(context).textTheme.bodyLarge!),
         Switch(
             value: appTheme.isDarkModeEnabled,
             onChanged: (enable) {
@@ -73,7 +76,7 @@ class _ThemeViewState extends ConsumerState<SettingsView> {
       },
       child: Text(
         LocaleKeys.button_languageChange.tr(),
-        style: Theme.of(context).textTheme.bodyMedium!,
+        style: Theme.of(context).textTheme.bodyLarge!,
       ),
     );
   }
