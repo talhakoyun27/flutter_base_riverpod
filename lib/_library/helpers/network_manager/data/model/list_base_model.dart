@@ -16,11 +16,11 @@ class ListBaseModel<T> {
   });
 
   factory ListBaseModel.fromMap(Map<String, dynamic> json,
-      Function(Map<String, dynamic>)? mappingFunction) {
+      Function(Map<String, dynamic>) mappingFunction) {
     return ListBaseModel<T>(
       status: json['status'] ?? false,
       message: json['message'] ?? '',
-      data: mappingFunction != null
+      data: json['data'] != null
           ? List<T>.from(json['data'].map((x) => mappingFunction(x)))
           : [],
       pagination: json['pagination'] != null
@@ -30,6 +30,6 @@ class ListBaseModel<T> {
   }
 
   factory ListBaseModel.fromJson(
-          String str, Function(Map<String, dynamic>)? mappingFunction) =>
+          String str, Function(Map<String, dynamic>) mappingFunction) =>
       ListBaseModel.fromMap(json.decode(str), mappingFunction);
 }
