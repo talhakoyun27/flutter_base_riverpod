@@ -10,16 +10,19 @@ class _ImageManagerDialogs {
       builder: (BuildContext context) {
         return permissionDialog ??
             AlertDialog(
-              title: const Text('İzin Gerekiyor'),
-              content: const Text(
-                'Bu eylem için izin vermelisiniz ...',
+              title: Text(LocaleKeys.permissionDialog_needPermission
+                  .tr(context: context)),
+              content: Text(
+                LocaleKeys.permissionDialog_mustGivePermission
+                    .tr(context: context),
               ),
               actions: <Widget>[
                 TextButton(
                   style: TextButton.styleFrom(
                     textStyle: Theme.of(context).textTheme.labelLarge,
                   ),
-                  child: const Text('Kapat'),
+                  child: Text(
+                      LocaleKeys.permissionDialog_close.tr(context: context)),
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -28,7 +31,8 @@ class _ImageManagerDialogs {
                   style: TextButton.styleFrom(
                     textStyle: Theme.of(context).textTheme.labelLarge,
                   ),
-                  child: const Text('İzin Ver'),
+                  child: Text(LocaleKeys.permissionDialog_givePermission
+                      .tr(context: context)),
                   onPressed: () async {
                     await openAppSettings();
                     if (context.mounted) {
@@ -62,7 +66,7 @@ class _ImageManagerDialogs {
       context: context,
       builder: (BuildContext context) {
         //prevent Back button press
-        return WillPopScope(onWillPop: () async => false, child: alert);
+        return PopScope(canPop: false, child: alert);
       },
     );
   }
@@ -73,6 +77,7 @@ class _ImageManagerDialogs {
     String? camera,
   }) async {
     _ImageLocation? result;
+    debugPrint("Locale -------> ${context.locale.toString()}");
     await showModalBottomSheet(
         context: context,
         builder: (context) {
@@ -85,7 +90,8 @@ class _ImageManagerDialogs {
                 ),
                 ListTile(
                   leading: const Icon(Icons.image),
-                  title: Text(gallery ?? 'Galeri'),
+                  title:
+                      Text(gallery ?? LocaleKeys.permissionDialog_gallery.tr()),
                   onTap: () {
                     result = _ImageLocation.gallery;
                     Navigator.pop(context);
@@ -93,7 +99,8 @@ class _ImageManagerDialogs {
                 ),
                 ListTile(
                   leading: const Icon(Icons.camera_alt),
-                  title: Text(camera ?? 'Kamera'),
+                  title:
+                      Text(camera ?? LocaleKeys.permissionDialog_camera.tr()),
                   onTap: () {
                     result = _ImageLocation.camera;
                     Navigator.pop(context);

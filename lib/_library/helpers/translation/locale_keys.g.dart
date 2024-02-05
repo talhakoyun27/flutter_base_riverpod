@@ -45,5 +45,18 @@ abstract class  LocaleKeys {
   static const error_locationError = 'error.locationError';
   static const error_versionError = 'error.versionError';
   static const error = 'error';
+  static const imageManager_maxImageSize = 'imageManager.maxImageSize';
+  static const imageManager_acceptedFormats = 'imageManager.acceptedFormats';
+  static const imageManager_exceededImageCount = 'imageManager.exceededImageCount';
+  static const imageManager_acceptedImageCount = 'imageManager.acceptedImageCount';
+  static const imageManager_maxVideoSize = 'imageManager.maxVideoSize';
+  static const imageManager = 'imageManager';
+  static const permissionDialog_needPermission = 'permissionDialog.needPermission';
+  static const permissionDialog_mustGivePermission = 'permissionDialog.mustGivePermission';
+  static const permissionDialog_close = 'permissionDialog.close';
+  static const permissionDialog_givePermission = 'permissionDialog.givePermission';
+  static const permissionDialog_gallery = 'permissionDialog.gallery';
+  static const permissionDialog_camera = 'permissionDialog.camera';
+  static const permissionDialog = 'permissionDialog';
 
 }

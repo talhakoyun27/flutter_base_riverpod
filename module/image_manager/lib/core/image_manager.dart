@@ -1,5 +1,7 @@
 library image_manager;
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:image_manager/_library/helpers/translation/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -17,25 +19,30 @@ enum _ImageLocation {
   camera,
 }
 
-///* Fonksiyonlarda çıkan alertDialogun tasarımı için alertDialog fieldlarına değer verebilirsiniz.
-///
-///
-///
 ///* Gerekli Android izni:
-///     <br/>`<uses-permission android:name="android.permission.CAMERA" />'
-///     <br/>`<uses-feature android:name="android.hardware.camera" />'
-///     <br/>`<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>'
-///     <br/>`<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>'
-///     <br/>`<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />'
-///     <br/>`<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />'
+///     <br/>`<uses-permission android:name="android.permission.CAMERA" />`
+///     <br/>`<uses-feature android:name="android.hardware.camera" />`
 ///
 ///
+///  <!-- Permissions options for the `storage` group -->
+///     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+///     <!-- Read storage permission for Android 12 and lower -->
+///     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+///     <!--
+///       Granular media permissions for Android 13 and newer.
+///       See https://developer.android.com/about/versions/13/behavior-changes-13#granular-media-permissions
+///       for more information.
+///     -->
+///     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+///    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
 ///* Gerekli Ios izinleri:
 ///    <br/>`<key>NSPhotoLibraryUsageDescription</key>`
 ///    <br/>`<string>Please grant photo gallery access</string>`
 ///    <br/>`<key>NSCameraUsageDescription</key>`
 ///    <br/>`<string>Please grant camera access</string>`
-///
+///    <br/>`<key>NSMicrophoneUsageDescription</key>`
+///    <br/>`<string>Please grant microphone access</string>`
+///* Fonksiyonlarda çıkan alertDialogun tasarımı için alertDialog fieldlarına değer verebilirsiniz.
 class ImageManager {
   ///* Kullanıcının galeri yada kameradan resim göndermesini sağlar.
   static Future<XFile?> getImage(
@@ -173,7 +180,7 @@ class ImageManager {
             SnackBar(
               content: Text(
                 maxFileSizeMessage ??
-                    "Seçilen resim en fazla $maxImageSizeInMb mb boyutunda olmalıdır.",
+                    "${LocaleKeys.mainText_maxImageSize.tr(context: context)} $maxImageSizeInMb",
               ),
             ),
           );
@@ -191,7 +198,7 @@ class ImageManager {
             SnackBar(
               content: Text(
                 acceptedImageTypesMessage ??
-                    "Kabul edilen dosya formatları: ${acceptedImageTypes.join('-')}.",
+                    "${LocaleKeys.mainText_acceptedFormats.tr(context: context)} ${acceptedImageTypes.join('-')}.",
               ),
             ),
           );
@@ -271,7 +278,7 @@ class ImageManager {
             SnackBar(
               content: Text(
                 acceptedImageTypesMessage ??
-                    "Kabul edilen dosya formatları: ${acceptedImageTypes.join('-')}.",
+                    "${LocaleKeys.mainText_acceptedFormats.tr(context: context)} ${acceptedImageTypes.join('-')}.",
               ),
             ),
           );
@@ -285,7 +292,7 @@ class ImageManager {
             SnackBar(
               content: Text(
                 maxFileSizeMessage == null
-                    ? "Seçilen resimler en fazla $maxImageSizeInMb megabyte boyutunda olmalıdır. Boyutu geçen resim sayısı:${exceedImages.length}"
+                    ? "${LocaleKeys.mainText_maxImageSize.tr(context: context)} $maxImageSizeInMb. ${LocaleKeys.mainText_exceededImageCount.tr(context: context)} ${exceedImages.length}"
                     : "$maxFileSizeMessage ${exceedImages.length}",
               ),
             ),
@@ -304,7 +311,7 @@ class ImageManager {
             SnackBar(
               content: Text(
                 maxImageMessage ??
-                    "Maksimum $maxImageCount adet resim ekleyebilirsiniz.",
+                    "${LocaleKeys.mainText_acceptedImageCount.tr(context: context)} $maxImageCount ",
               ),
             ),
           );
@@ -374,7 +381,7 @@ class ImageManager {
               SnackBar(
                 content: Text(
                   maxFileSizeMessage ??
-                      "Eklenen video en fazla $maxVideoSizeInMb mb boyutunda olmalıdır.",
+                      "${LocaleKeys.mainText_maxVideoSize.tr(context: context)} $maxVideoSizeInMb .",
                 ),
               ),
             );
