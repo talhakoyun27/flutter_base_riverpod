@@ -41,6 +41,10 @@ dependencies:
   shimmer: ^3.0.0
   url_launcher: ^6.2.2
   webview_flutter: ^4.4.2
+    # Modules
+  image_manager:
+    path: module/image_manager
+
 
 dev_dependencies:
   build_runner: ^2.4.7
